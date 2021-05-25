@@ -1,0 +1,264 @@
+<html>
+
+<head>
+	<title>Registration</title>
+	<style>
+		#table1 {
+			border-collapse: collapse;
+			font-family: arial, sans-serif;
+			background-color: cornsilk;
+			border-radius: 5px;
+			color: rgb(71, 59, 8);
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+
+		}
+
+		input,
+		select,
+		textarea {
+			padding: 5px 10px;
+			border: none;
+			background-color: cornsilk;
+			border-bottom: 2px solid rgb(209, 182, 74);
+			outline: none;
+			color: rgb(104, 85, 12);
+		}
+
+		.button {
+			background-color: rgb(133, 112, 27);
+			color: white;
+			padding: 15px 30px;
+			text-align: center;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			border-radius: 5px;
+			border: none;
+		}
+
+		label {
+			color: blue;
+			font-size: 14px;
+			font-weight: normal;
+			position: absolute;
+			pointer-events: none;
+			margin: 5px;
+		}
+
+		#div0 {
+			display: inline-block;
+			margin: 100px 0px 0px 200px;
+		}
+
+		#div1 {
+			background-color: cornsilk;
+			height: 400px;
+			width: 400px;
+			display: inline-block;
+			border-radius: 5px;
+			margin-top: -550px;
+			margin-left: 200px;
+			text-align: center;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+		}
+	</style>
+	<script>
+		function setlabel(x) {
+			var mylabel;
+			if (x == "Name") mylabel = "* Only alphabets allowed";
+			if (x == "Enrolment") mylabel = "* Give 12 digit number";
+			if (x == "Password") mylabel = "* min length 6, at least 1 letter, 1 number and 1 special character";
+			if (x == "Phone") mylabel = "* Enter 10 digit number";
+			document.getElementById(x).innerHTML = mylabel;
+		}
+
+		function checkName(name) {
+			if (name.match(/^[a-zA-Z ]+$/))
+				document.getElementById("Name").innerHTML = "";
+			else {
+				document.getElementById("Name").style.color = "red";
+				document.getElementById("Name").innerHTML = "Invalid name";
+			}
+		}
+
+		function checkEnr(enr) {
+			if (enr.match(/^[0-9]{12}$/))
+				document.getElementById("Enrolment").innerHTML = "";
+			else {
+				document.getElementById("Enrolment").style.color = "red";
+				document.getElementById("Enrolment").innerHTML = "Invalid Enrolment number";
+			}
+		}
+
+		function checkPasswd(p) {
+			if (p.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/))
+				document.getElementById("Password").innerHTML = "";
+			else {
+				document.getElementById("Password").style.color = "red";
+				document.getElementById("Password").innerHTML = "Not valid";
+			}
+		}
+
+		function cpasswd(cp) {
+			var p = document.getElementsByName("Password")[0].value;
+			if (document.getElementById("Password").innerHTML == "Not valid")
+				document.getElementById("CPassword").innerHTML = "Enter valid password";
+			else if (p == cp) {
+				document.getElementById("CPassword").innerHTML = "OK";
+				document.getElementById("CPassword").style.color = "green";
+			}
+			else {
+				document.getElementById("CPassword").style.color = "red";
+				document.getElementById("CPassword").innerHTML = "Password Not matching";
+			}
+		}
+
+		function checkEmail(em) {
+			if (em.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+				document.getElementById("Email").innerHTML = "OK";
+				document.getElementById("Email").style.color = "green";
+			}
+			else {
+				document.getElementById("Email").style.color = "red";
+				document.getElementById("Email").innerHTML = "Invalid Email Id";
+			}
+
+		}
+
+		function checkPhone(no) {
+			if (no.match(/^\d{10}$/))
+				document.getElementById("Phone").innerHTML = "";
+			else {
+				document.getElementById("Phone").style.color = "red";
+				document.getElementById("Phone").innerHTML = "Invalid Phone number";
+			}
+		}
+
+	</script>
+</head>
+
+<body>
+	<div id="div0">
+		<form>
+			<table cellpadding="5" id="table1">
+				<tr>
+					<td>NAME</td>
+					<td>
+						<input type="text" name="Name" onfocus="setlabel(this.name)" onblur="checkName(Name.value)"
+							Required />
+						<label id="Name"></label>
+					</td>
+				</tr>
+
+				<tr>
+					<td>ENROLMENT NO.</td>
+					<td><input type="text" name="Enrolment" onfocus="setlabel(this.name)"
+							onblur="checkEnr(Enrolment.value)" Required />
+						<label id="Enrolment"></label>
+					</td>
+				</tr>
+
+				<tr>
+					<td>DOB</td>
+					<td>
+						<input type="date" name="dob" required />
+					</td>
+				</tr>
+
+				<tr>
+					<td>GENDER</td>
+					<td>
+						Male <input type="radio" name="Gender" id="m" value="Male" Required />
+						Female <input type="radio" name="Gender" id="f" value="Female" />
+					</td>
+				</tr>
+
+				<tr>
+					<td>ADDRESS <br /><br /><br /></td>
+					<td><textarea name="Address" rows="3" cols="16" Required></textarea></td>
+				</tr>
+
+				<tr>
+					<td>PASSWORD</td>
+					<td><input type="password" name="Password" onfocus="setlabel(this.name)"
+							onblur="checkPasswd(Password.value)" Required />
+						<label id="Password"></label>
+					</td>
+				</tr>
+
+				<tr>
+					<td>CONFIRM PASSWORD</td>
+					<td><input type="password" name="CPassword" onblur="cpasswd(CPassword.value)" Required />
+						<label id="CPassword"></label>
+					</td>
+				</tr>
+
+				<tr>
+					<td>EMAIL ID</td>
+					<td><input name="Email" onblur="checkEmail(Email.value)" Required />
+						<label id="Email"></label>
+					</td>
+				</tr>
+
+				<tr>
+					<td>PHONE NO.</td>
+					<td><input name="Phone" onfocus="setlabel(this.name)" onblur="checkPhone(Phone.value)" Required />
+						<label id="Phone"></label>
+					</td>
+				</tr>
+
+				<tr>
+					<td>SUBJECTS <br /><br /><br /></td>
+
+					<td>
+						Python
+						<input type="checkbox" name="Python" value="Python" />
+						C++
+						<input type="checkbox" name="C++" value="C++" />
+						Java
+						<input type="checkbox" name="Java" value="Java" />
+						.NET
+						<input type="checkbox" name=".NET" value=".NET" />
+						Dart
+						<input type="checkbox" name="Dart" value="Dart" />
+						<br />
+						Others
+						<input type="checkbox" name="Other" value="Other">
+						<input type="text" name="Other" maxlength="30" />
+					</td>
+				</tr>
+
+				<tr>
+					<td>CITY</td>
+					<td>
+						<select name="City" Required>
+							<option value="0">Select City</option>
+							<option value="Ahmedabad">Ahmedabad</option>
+							<option value="Gandhinagar">Gandhinagar</option>
+							<option value="Jamnagar">Jamnagar</option>
+							<option value="Rajkot">Rajkot</option>
+							<option value="Vadodara">Vadodara</option>
+							<option value="Valsad">Valsad</option>
+						</select>
+					</td>
+				</tr>
+
+
+				<tr>
+					<td colspan="2" align="center">
+						<button type="submit" value="Register" class="button">Register</button>
+						<button type="reset" value="Reset" class="button">Reset</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id='div1'>
+		<h2>Student Registrations are Open</h2>
+		<h1 style="color: red;">👈 Enroll Now!</h1>
+		<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUJ3FlBycRUZPMSTjVSGtyuu4VwazPmRbg5A&usqp=CAU'>
+	</div>
+</body>
+
+</html>
