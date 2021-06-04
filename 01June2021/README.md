@@ -9,6 +9,7 @@ django-admin --version
 ### Creating Project and migrate to create tables in the database 
 ```
 django-admin startproject myproject
+cd myproject
 python manage.py migrate
 ```
 ![2](https://user-images.githubusercontent.com/64186894/120802802-79725380-c560-11eb-9dca-6dc55ee85c03.jpg)
