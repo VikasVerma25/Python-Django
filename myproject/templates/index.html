@@ -1,0 +1,45 @@
+{% extends 'master.html' %}
+{% block mycontent0 %}
+{% load static %}
+<!-- banner -->
+<section class="banner_main">
+    <div class="container-fluid">
+       <div class="row d_flex">
+          <div class="col-md-5">
+             <div class="text-bg">
+                <h1>Computer and <br>laptop shop</h1>
+                <strong>Free Multipurpose Responsive</strong>
+                <span>Landing Page 2019</span>
+                <a href="#">Buy Now</a>
+             </div>
+          </div>
+          <div class="col-md-7 padding_right1">
+             <div class="text-img">
+                <figure><img src="{% static 'images/top_img.png' %}" alt="#"/></figure>
+                <h3>01</h3>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+<!-- end banner -->
+<!-- two_box section -->
+<div  class="two_box">
+   <div class="container-fluid">
+    <div class="row d_flex">
+       <div class="col-md-6">
+          <div class="two_box_img">
+             <figure><img src="{% static 'images/leptop.jpg' %}" alt="#"/></figure>
+          </div>
+       </div>
+       <div class="col-md-6">
+          <div class="two_box_img">
+             <h2><span class="offer">15% </span>0ffer everyday</h2>
+             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
+          </div>
+       </div>
+    </div>
+   </div>
+   </div>
+   <!-- end two_box section -->
+{% endblock %}
